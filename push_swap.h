@@ -6,10 +6,16 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/11 19:24:21 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/14 00:26:32 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <stdio.h>
 
 # include "../libft/libft.h"
+
+typedef struct s_tab
+{
+	int	len;
+	int	*array;
+}	t_tab;
