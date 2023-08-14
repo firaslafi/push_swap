@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/14 01:05:04 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/14 20:51:15 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,24 @@ int ft_fillarr_onestr(int argc, char **argv, t_tab *tab)
 // fillin struct array case not one str
 int ft_fillarr_array(int argc, char **argv, t_tab *tab)
 {
+	int i;
+	int j;
+	
+	i = 1;
+	j = 0;
+	tab->array = (int *) malloc((sizeof(int) * tab->len));
+	if (!tab->array)
+		return (0);
+	while (argv[i])
+	{
+		tab->array[j] = ft_atoi(argv[i]);
+		i++;
+		j++;
+	}
+	tab->len = j;
+	j = 0;
+
+	return (1);
 	// finish tomorrow
 }
 int	main(int argc, char **argv)
@@ -179,6 +197,7 @@ int	main(int argc, char **argv)
 	{
 		printf("multiple input\n");
 		ft_isnumber_array(argc - 1, argv);
+		ft_fillarr_array(argc, argv, tab);
 	}
 	return (0);
 }
