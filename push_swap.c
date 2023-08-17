@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/14 20:51:15 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/17 21:05:25 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,25 +128,23 @@ int	ft_isnumber_array(int count, char **argv)
 	return (1);
 }
 // fillin struct array case one str
-int ft_fillarr_onestr(int argc, char **argv, t_tab *tab)
+int	ft_fillarr_onestr(int argc, char **argv, t_tab *tab)
 {
-	int i;
-	char **str;
+	int		i;
+	char	**str;
 
 	str = ft_split(argv[1], ' ');
-	tab->array = (int *) malloc((sizeof(int) * tab->len));
+	tab->array = (int *)malloc((sizeof(int) * tab->len));
 	if (!tab->array)
 		return (0);
 	i = 0;
-
-	while(str[i])
+	while (str[i])
 	{
 		tab->array[i] = ft_atoi(str[i]);
-		
 		i++;
 	}
 	i = 0;
-	while(tab->array[i])
+	while (tab->array[i])
 	{
 		printf("tab=%i\n", tab->array[i]);
 		i++;
@@ -154,14 +152,14 @@ int ft_fillarr_onestr(int argc, char **argv, t_tab *tab)
 	return (1);
 }
 // fillin struct array case not one str
-int ft_fillarr_array(int argc, char **argv, t_tab *tab)
+int	ft_fillarr_array(int argc, char **argv, t_tab *tab)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 1;
 	j = 0;
-	tab->array = (int *) malloc((sizeof(int) * tab->len));
+	tab->array = (int *)malloc((sizeof(int) * tab->len));
 	if (!tab->array)
 		return (0);
 	while (argv[i])
@@ -172,21 +170,49 @@ int ft_fillarr_array(int argc, char **argv, t_tab *tab)
 	}
 	tab->len = j;
 	j = 0;
-
 	return (1);
 	// finish tomorrow
 }
+int	ft_checkduplicate_limit(t_tab *tab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < tab->len - 1)
+	{
+		if (tab->array[i] < INT_MIN || tab->array[i] > INT_MAX)
+			{
+				printf("int out of boundries!\n");
+				return (0); 
+			}
+		j = i + 1;
+		while (j < tab->len)
+		{
+			if (tab->array[i] == tab->array[j])
+				{
+					printf("duplicate found!\n");
+					return (0); 
+				}
+			j++;
+		}
+		i++;
+	}
+	return (1); 
+}
+					
 int	main(int argc, char **argv)
 {
-	t_tab *tab;
+	t_tab	*tab;
+
 	if (argc < 2)
 	{
 		printf("Error\n");
 		return (0);
 	}
-	tab = (struct s_tab*)malloc(sizeof(struct s_tab));
+	tab = (struct s_tab *)malloc(sizeof(struct s_tab));
 	if (!tab)
-		return(0);
+		return (0);
 	if (argc == 2)
 	{
 		printf("one signle string input\n");
@@ -199,5 +225,6 @@ int	main(int argc, char **argv)
 		ft_isnumber_array(argc - 1, argv);
 		ft_fillarr_array(argc, argv, tab);
 	}
+	ft_checkduplicate_limit(tab);
 	return (0);
 }
