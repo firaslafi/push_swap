@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/19 00:18:47 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/19 22:18:13 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 	typedef struct s_node
 	{
 		int	data;
+		int index;
 		struct s_node	*next;
 		struct s_node	*prev;
 

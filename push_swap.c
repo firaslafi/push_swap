@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/19 01:05:38 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/19 22:33:13 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,8 +235,8 @@ void	ft_insertNode(t_node **head, int data)
 		}
 		current->next = newNode;
 		newNode->prev = current;
-		newNode->next = *head;
-		// // head->prev = newNode;
+		// newNode->next = *head;
+		// head->prev = newNode;
 	}
 }
 
@@ -251,6 +251,20 @@ void	ft_fill_stacka(t_node **head, t_tab *tab)
 		ft_insertNode(head, (int)tab->array[i]);
 		i++;
 	}
+}
+// r ft_
+void ft_something(t_tab *tab)
+{
+	int i;
+	int *arr_cpy;
+
+	i = 0;
+	arr_cpy = malloc(tab->len * sizeof(int));
+	while(tab->array[i++])
+	{
+		arr_cpy[i] = tab->array[i];
+	}
+	
 }
 int	main(int argc, char **argv)
 {
@@ -277,14 +291,15 @@ int	main(int argc, char **argv)
 		ft_fillarr_array(argv, tab);
 	}
 	ft_checkduplicate_limit(tab);
+	
 	head = NULL;
-	ft_fill_stacka(&head, tab);
-	t_node *current = head;
-    while (current)
-    {
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
+	// ft_fill_stacka(&head, tab);
+	// t_node *current = head;
+    // while (current)
+    // {
+    //     printf("%d ", current->data);
+    //     current = current->next;
+    // }
+    // printf("\n");
 	return (0);
 }
