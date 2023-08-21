@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/19 22:33:13 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/21 23:53:30 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,11 +196,11 @@ int	ft_checkduplicate_limit(t_tab *tab)
 	return (1);
 }
 // Function to create a new node
-t_node	*ft_createnode(int data)
+t_stack	*ft_createnode(int data)
 {
-	t_node	*newNode;
+	t_stack	*newNode;
 
-	newNode = (t_node *)malloc(sizeof(t_node));
+	newNode = (t_stack *)malloc(sizeof(t_stack));
 	if (newNode)
 	{
 		newNode->data = data;
@@ -211,10 +211,10 @@ t_node	*ft_createnode(int data)
 }
 
 // fn insert a node at the end
-void	ft_insertNode(t_node **head, int data)
+void	ft_insertNode(t_stack **head, int data)
 {
-	t_node	*newNode;
-	t_node	*current;
+	t_stack	*newNode;
+	t_stack	*current;
 
 	newNode = ft_createnode(data);
 	if (!newNode)
@@ -240,36 +240,98 @@ void	ft_insertNode(t_node **head, int data)
 	}
 }
 
-void	ft_fill_stacka(t_node **head, t_tab *tab)
+void	ft_fill_stacka(t_stack **head, t_tab *tab)
 {
-	int i;
-
-	i = 0;
+	int	i;
+	// t_stack adr_head;
 	
-	while(tab->len > i)
+	i = 0;
+	while (tab->len > i)
 	{
 		ft_insertNode(head, (int)tab->array[i]);
 		i++;
 	}
 }
-// r ft_
-void ft_something(t_tab *tab)
+int	*ft_bubblesort(int *arr, int n)
 {
-	int i;
-	int *arr_cpy;
+	int	temp;
+	int	i;
+	int	j;
+
+	i = 0;
+	int swapped = 1; // Initialize swapped to 1 to enter the loop
+	while (i < n - 1 && swapped)
+	{
+		swapped = 0; // Reset the swapped flag at the beginning of each pass
+		j = 0;
+		while (j < n - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				// Swap arr[j] and arr[j + 1]
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				swapped = 1; // Set the swapped flag to indicate a swap occurred
+			}
+			j++;
+		}
+		i++;
+	}
+	return(arr);
+}
+
+void	ft_something(t_tab *tab, t_stack *stack)
+{
+	int	i;
+	int j;
+	int	*arr_cpy;
 
 	i = 0;
 	arr_cpy = malloc(tab->len * sizeof(int));
-	while(tab->array[i++])
+	while (tab->array[i])
 	{
 		arr_cpy[i] = tab->array[i];
+		i++;
 	}
-	
+	arr_cpy = ft_bubblesort(arr_cpy, tab->len);
+	i = 0;
+	j = 0;
+	while(stack->next)
+	{
+		while(arr_cpy[i])
+		{
+			
+			if (arr_cpy[i] == stack->data)
+				{
+					stack->index = i;
+					break;
+				}
+			i++;
+		}
+		i = 0;
+		stack = stack->next;
+		if (!stack->next)
+			{
+				while(arr_cpy[j])
+				{
+					if(arr_cpy[j] == stack->data)
+						{
+						stack->index = j;
+						break;
+						}
+					j++;
+				}
+			}
+			
+	}
+
 }
 int	main(int argc, char **argv)
 {
 	t_tab	*tab;
-	t_node *head;
+	t_stack	*head;
+	t_stacks *stacks;
 	if (argc < 2)
 	{
 		printf("Error\n");
@@ -291,15 +353,22 @@ int	main(int argc, char **argv)
 		ft_fillarr_array(argv, tab);
 	}
 	ft_checkduplicate_limit(tab);
-	
+	stacks = (struct s_stacks *)malloc(sizeof(struct s_stacks));
+	if (!stacks)
+		exit(1);
+	stacks->a = NULL;
+	stacks->b = NULL;
 	head = NULL;
+	ft_fill_stacka(&stacks->a, tab);
 	// ft_fill_stacka(&head, tab);
-	// t_node *current = head;
-    // while (current)
-    // {
-    //     printf("%d ", current->data);
-    //     current = current->next;
-    // }
-    // printf("\n");
+	ft_something(tab, stacks->a);
+	t_stack *current = stacks->a;
+	sa(current);
+	while (current)
+	{
+	   printf("number = %i and index = %i\n", current->data, current->index);
+	    current = current->next;
+	}
+	printf("\n");
 	return (0);
 }
