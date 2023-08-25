@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/21 23:52:20 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/25 23:38:33 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ typedef struct s_stack
 	int				data;
 	int				index;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 
 }					t_stack;
 
@@ -38,3 +37,4 @@ typedef struct s_tab
 
 long long			ft_atol(const char *str);
 void				sa(t_stack *stack_a);
+void pa(t_stack *stack_a, t_stack *stack_b);

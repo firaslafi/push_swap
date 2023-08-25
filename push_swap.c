@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/21 23:53:30 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/25 23:45:41 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,6 @@ t_stack	*ft_createnode(int data)
 	{
 		newNode->data = data;
 		newNode->next = NULL;
-		newNode->prev = NULL;
 	}
 	return (newNode);
 }
@@ -234,7 +233,6 @@ void	ft_insertNode(t_stack **head, int data)
 			current = current->next;
 		}
 		current->next = newNode;
-		newNode->prev = current;
 		// newNode->next = *head;
 		// head->prev = newNode;
 	}
@@ -363,10 +361,15 @@ int	main(int argc, char **argv)
 	// ft_fill_stacka(&head, tab);
 	ft_something(tab, stacks->a);
 	t_stack *current = stacks->a;
-	sa(current);
+	t_stack *stackb = (struct s_stack *)malloc(sizeof(struct s_stack));
+	stackb->data = 999999;
+	stackb->next = NULL;
+	stackb->index = 999999;
+	// sa(current);
+	pa(stacks->a, stackb);
 	while (current)
 	{
-	   printf("number = %i and index = %i\n", current->data, current->index);
+		printf("number = %i and index = %i\n", current->data, current->index);
 	    current = current->next;
 	}
 	printf("\n");
