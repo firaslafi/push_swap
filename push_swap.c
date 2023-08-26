@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/25 23:45:41 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/27 00:06:55 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,11 +362,20 @@ int	main(int argc, char **argv)
 	ft_something(tab, stacks->a);
 	t_stack *current = stacks->a;
 	t_stack *stackb = (struct s_stack *)malloc(sizeof(struct s_stack));
+	// t_stack *stackc = (struct s_stack *)malloc(sizeof(struct s_stack));
+	
 	stackb->data = 999999;
 	stackb->next = NULL;
 	stackb->index = 999999;
+	
+	// stackc->data = 1111111;
+	// stackc->next = NULL;
+	// stackc->index = 1111111;
 	// sa(current);
-	pa(stacks->a, stackb);
+
+	// pb(&(stacks->a), &stackb);
+	// pa(&(stacks->a), &stackb);
+	current = stackb;
 	while (current)
 	{
 		printf("number = %i and index = %i\n", current->data, current->index);
