@@ -1,49 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/27 00:04:25 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/28 23:56:49 by flafi            ###   ########.fr       */
+/*   Created: 2023/08/28 21:32:28 by flafi             #+#    #+#             */
+/*   Updated: 2023/08/29 00:22:32 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **stack)
+void	rev_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
-	t_stack	*current;
+	t_stack	*last;
 	t_stack	*head;
+	t_stack	*before_last;
 
 	if ((*stack)->next == NULL)
 		return ;
-	current = (*stack);
 	head = (*stack);
 	tmp = (*stack)->next;
-	while (current->next)
-		current = current->next;
-	current->next = head;
-	head->next = NULL;
-	*stack = tmp;
+	last = (*stack);
+	while (last->next)
+	{
+		before_last = last;
+		last = last->next;
+	}
+	before_last->next = NULL;
+	last->next = head;
+	(*stack) = last;
+}
+void	rra(t_stack **stack)
+{
+	rev_rotate(stack);
+	printf("rra\n");
 }
 
-void	ra(t_stack **stack)
+void	rrb(t_stack **stack)
 {
-	rotate(stack);
-	printf("ra\n");
+	rev_rotate(stack);
+	printf("rrb\n");
 }
-
-void	rb(t_stack **stack)
+void	rrr(t_stack **stacka, t_stack **stackb)
 {
-	rotate(stack);
-	printf("rb\n");
-}
-void	rr(t_stack **stacka, t_stack **stackb)
-{
-	rotate(stacka);
-	rotate(stackb);
-	printf("rr\n");
+	rev_rotate(stacka);
+	rev_rotate(stackb);
+	printf("rrr\n");
 }

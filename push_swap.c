@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/27 00:06:55 by flafi            ###   ########.fr       */
+/*   Updated: 2023/08/29 00:26:56 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,6 +325,22 @@ void	ft_something(t_tab *tab, t_stack *stack)
 	}
 
 }
+// push to fill stack for testing purposes only !!!!!
+void pushh(t_stack **top, int data, int index)
+{
+    t_stack *new_node = (t_stack *)malloc(sizeof(t_stack));
+    if (new_node == NULL)
+    {
+        perror("Memory allocation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    new_node->data = data;
+    new_node->index = index;
+    new_node->next = *top;
+    *top = new_node;
+}
+
 int	main(int argc, char **argv)
 {
 	t_tab	*tab;
@@ -364,17 +380,22 @@ int	main(int argc, char **argv)
 	t_stack *stackb = (struct s_stack *)malloc(sizeof(struct s_stack));
 	// t_stack *stackc = (struct s_stack *)malloc(sizeof(struct s_stack));
 	
-	stackb->data = 999999;
+	stackb->data = 0;
 	stackb->next = NULL;
-	stackb->index = 999999;
+	stackb->index = 0;
 	
-	// stackc->data = 1111111;
-	// stackc->next = NULL;
-	// stackc->index = 1111111;
+	pushh(&stackb, 1, 1);
+	pushh(&stackb, 2, 2);
+	pushh(&stackb, 3, 3);
+	pushh(&stackb, 4, 4);
+	pushh(&stackb, 5, 5);
 	// sa(current);
-
+	// rotate(&stackb);
+	rra(&stackb);
+	
 	// pb(&(stacks->a), &stackb);
 	// pa(&(stacks->a), &stackb);
+	
 	current = stackb;
 	while (current)
 	{
