@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/29 00:26:56 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/01 01:04:21 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,23 @@ int	ft_checksign(char *str)
 		}
 		i++;
 	}
+	return (1);
+}
+int	ft_issorted(long long *array)
+{
+	int	i;
+
+	i = 1;
+	while (array[i])
+	{
+		if (array[i - 1] > array[i])
+		{
+			printf("not sorted, do stuff!\n");
+			return (0);
+		}
+		i++;
+	}
+	printf("Stack is Sorted! nothing to do.\n");
 	return (1);
 }
 // handling the validation of the input when it is a single string
@@ -142,6 +159,8 @@ int	ft_fillarr_onestr(char **argv, t_tab *tab)
 		tab->array[i] = ft_atol(str[i]);
 		i++;
 	}
+	if (ft_issorted(tab->array))
+		exit(0);
 	return (1);
 }
 // fillin struct array case not one str
@@ -165,9 +184,11 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 	}
 	tab->len = j;
 	j = 0;
+	if (ft_issorted(tab->array))
+		exit(0);
 	return (1);
-	// finish tomorrow
 }
+// checking for duplicate numbers and INT boundries
 int	ft_checkduplicate_limit(t_tab *tab)
 {
 	int	i;
@@ -237,12 +258,11 @@ void	ft_insertNode(t_stack **head, int data)
 		// head->prev = newNode;
 	}
 }
-
+// filling stack a obviously
 void	ft_fill_stacka(t_stack **head, t_tab *tab)
 {
 	int	i;
-	// t_stack adr_head;
-	
+
 	i = 0;
 	while (tab->len > i)
 	{
@@ -250,6 +270,7 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 		i++;
 	}
 }
+// bubble sort to set indexs
 int	*ft_bubblesort(int *arr, int n)
 {
 	int	temp;
@@ -276,13 +297,49 @@ int	*ft_bubblesort(int *arr, int n)
 		}
 		i++;
 	}
-	return(arr);
+	return (arr);
+}
+// matching copies and real stack int
+void	ft_match(int *arr_cpy, t_stack *stack)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (stack->next)
+	{
+		while (arr_cpy[i])
+		{
+			if (arr_cpy[i] == stack->data)
+			{
+				stack->index = i;
+				break ;
+			}
+			i++;
+		}
+		i = 0;
+		stack = stack->next;
+		if (!stack->next)
+		{
+			while (arr_cpy[j])
+			{
+				if (arr_cpy[j] == stack->data)
+				{
+					stack->index = j;
+					break ;
+				}
+				j++;
+			}
+		}
+	}
 }
 
+// making a copy of the numbers, sorting them
+// and setting them to their place + isSorted
 void	ft_something(t_tab *tab, t_stack *stack)
 {
 	int	i;
-	int j;
 	int	*arr_cpy;
 
 	i = 0;
@@ -293,59 +350,37 @@ void	ft_something(t_tab *tab, t_stack *stack)
 		i++;
 	}
 	arr_cpy = ft_bubblesort(arr_cpy, tab->len);
-	i = 0;
-	j = 0;
-	while(stack->next)
-	{
-		while(arr_cpy[i])
-		{
-			
-			if (arr_cpy[i] == stack->data)
-				{
-					stack->index = i;
-					break;
-				}
-			i++;
-		}
-		i = 0;
-		stack = stack->next;
-		if (!stack->next)
-			{
-				while(arr_cpy[j])
-				{
-					if(arr_cpy[j] == stack->data)
-						{
-						stack->index = j;
-						break;
-						}
-					j++;
-				}
-			}
-			
-	}
-
+	ft_match(arr_cpy, stack);
+	free(arr_cpy);
 }
 // push to fill stack for testing purposes only !!!!!
-void pushh(t_stack **top, int data, int index)
+void	pushh(t_stack **top, int data, int index)
 {
-    t_stack *new_node = (t_stack *)malloc(sizeof(t_stack));
-    if (new_node == NULL)
-    {
-        perror("Memory allocation failed");
-        exit(EXIT_FAILURE);
-    }
+	t_stack	*new_node;
 
-    new_node->data = data;
-    new_node->index = index;
-    new_node->next = *top;
-    *top = new_node;
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (new_node == NULL)
+	{
+		perror("Memory allocation failed");
+		exit(EXIT_FAILURE);
+	}
+	new_node->data = data;
+	new_node->index = index;
+	new_node->next = *top;
+	*top = new_node;
 }
-
+void ft_casethree(t_stack *stack)
+{
+	if (stack->data > stack->next->data)
+}
 int	main(int argc, char **argv)
 {
-	t_tab	*tab;
-	t_stack	*head;
-	t_stacks *stacks;
+	t_tab		*tab;
+	t_stack		*head;
+	t_stacks	*stacks;
+	t_stack		*current;
+	t_stack		*stackb;
+
 	if (argc < 2)
 	{
 		printf("Error\n");
@@ -376,14 +411,12 @@ int	main(int argc, char **argv)
 	ft_fill_stacka(&stacks->a, tab);
 	// ft_fill_stacka(&head, tab);
 	ft_something(tab, stacks->a);
-	t_stack *current = stacks->a;
-	t_stack *stackb = (struct s_stack *)malloc(sizeof(struct s_stack));
+	current = stacks->a;
+	stackb = (struct s_stack *)malloc(sizeof(struct s_stack));
 	// t_stack *stackc = (struct s_stack *)malloc(sizeof(struct s_stack));
-	
 	stackb->data = 0;
 	stackb->next = NULL;
 	stackb->index = 0;
-	
 	pushh(&stackb, 1, 1);
 	pushh(&stackb, 2, 2);
 	pushh(&stackb, 3, 3);
@@ -391,16 +424,14 @@ int	main(int argc, char **argv)
 	pushh(&stackb, 5, 5);
 	// sa(current);
 	// rotate(&stackb);
-	rra(&stackb);
-	
+	// ra(&stackb);
 	// pb(&(stacks->a), &stackb);
 	// pa(&(stacks->a), &stackb);
-	
-	current = stackb;
+	current = head;
 	while (current)
 	{
 		printf("number = %i and index = %i\n", current->data, current->index);
-	    current = current->next;
+		current = current->next;
 	}
 	printf("\n");
 	return (0);
