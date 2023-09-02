@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/08/29 00:22:30 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/03 00:48:53 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ typedef struct s_stack
 	int				data;
 	int				index;
 	struct s_stack	*next;
-
 }					t_stack;
 
 typedef struct s_stacks
 {
 	t_stack			*a;
 	t_stack			*b;
+	struct s_stack	*heada;
 	int				size;
 }					t_stacks;
 
@@ -48,3 +48,5 @@ void				rr(t_stack **stacka, t_stack **stackb);
 void				rra(t_stack **stack);
 void				rrb(t_stack **stack);
 void				rrr(t_stack **stacka, t_stack **stackb);
+int					ft_sqrt(int nb);
+int					count_r(t_stack *stack, int index);

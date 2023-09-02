@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/01 01:04:21 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/03 01:18:52 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,17 +369,74 @@ void	pushh(t_stack **top, int data, int index)
 	new_node->next = *top;
 	*top = new_node;
 }
-void ft_casethree(t_stack *stack)
+void	k_sort1(t_stacks *stacks, int length)
 {
-	if (stack->data > stack->next->data)
+	int	i;
+	int	range;
+
+	i = 0;
+	range = ft_sqrt(length) * 14 / 10;
+	while (stacks->a)
+	{
+		if (stacks->a->index <= i)
+		{
+			pb(&stacks->a, &stacks->b);
+			rb(&stacks->b);
+			i++;
+		}
+		else if (stacks->a->index <= i + range)
+		{
+			pb(&stacks->a, &stacks->b);
+			i++;
+		}
+		else
+			ra(&stacks->a);
+	}
+}
+
+void	k_sort2(t_stacks *stacks, int length)
+{
+	int	rb_count;
+	int	rrb_count;
+
+	while (length - 1 >= 0)
+	{
+		rb_count = count_r(stacks->b, length - 1);
+		rrb_count = (length + 3) - rb_count;
+		if (rb_count <= rrb_count)
+		{
+			while (stacks->b->index != length - 1)
+				rb(&stacks->b);
+			pa(&stacks->a, &stacks->b);
+			length--;
+		}
+		else
+		{
+			while (stacks->b->index != length - 1)
+				rrb(&stacks->b);
+			pa(&stacks->a, &stacks->b);
+			length--;
+		}
+	}
+}
+
+int	count_r(t_stack *stack, int index)
+{
+	int	counter;
+
+	counter = 0;
+	while (stack && stack->index != index)
+	{
+		stack = stack->next;
+		counter++;
+	}
+	return (counter);
 }
 int	main(int argc, char **argv)
 {
 	t_tab		*tab;
-	t_stack		*head;
 	t_stacks	*stacks;
 	t_stack		*current;
-	t_stack		*stackb;
 
 	if (argc < 2)
 	{
@@ -405,29 +462,35 @@ int	main(int argc, char **argv)
 	stacks = (struct s_stacks *)malloc(sizeof(struct s_stacks));
 	if (!stacks)
 		exit(1);
-	stacks->a = NULL;
-	stacks->b = NULL;
-	head = NULL;
+	
+
 	ft_fill_stacka(&stacks->a, tab);
 	// ft_fill_stacka(&head, tab);
 	ft_something(tab, stacks->a);
-	current = stacks->a;
-	stackb = (struct s_stack *)malloc(sizeof(struct s_stack));
-	// t_stack *stackc = (struct s_stack *)malloc(sizeof(struct s_stack));
-	stackb->data = 0;
-	stackb->next = NULL;
-	stackb->index = 0;
-	pushh(&stackb, 1, 1);
-	pushh(&stackb, 2, 2);
-	pushh(&stackb, 3, 3);
-	pushh(&stackb, 4, 4);
-	pushh(&stackb, 5, 5);
+	
+	stacks->b = (struct s_stack *)malloc(sizeof(struct s_stack));
+	
+	stacks->size = tab->len;
+
+	stacks->heada = stacks->a;
+	// stacks->headb = stacks->b;
+	
+	k_sort1(stacks, stacks->size);
+	k_sort2(stacks, stacks->size);
+	
+	// pushh(&stackb, 1, 1);
+	// pushh(&stackb, 2, 2);
+	// pushh(&stackb, 3, 3);
+	// pushh(&stackb, 4, 4);
+	// pushh(&stackb, 5, 5);
 	// sa(current);
 	// rotate(&stackb);
 	// ra(&stackb);
 	// pb(&(stacks->a), &stackb);
 	// pa(&(stacks->a), &stackb);
-	current = head;
+			// dprintf(2, "data == %i", stacks->a->data);
+	
+	current = stacks->a;
 	while (current)
 	{
 		printf("number = %i and index = %i\n", current->data, current->index);
