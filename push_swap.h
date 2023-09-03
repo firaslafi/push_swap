@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/03 00:48:53 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/03 21:01:11 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_stacks
 {
 	t_stack			*a;
 	t_stack			*b;
-	struct s_stack	*heada;
 	int				size;
 }					t_stacks;
 

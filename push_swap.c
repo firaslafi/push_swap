@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/03 01:18:52 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/03 22:17:03 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,11 +432,42 @@ int	count_r(t_stack *stack, int index)
 	}
 	return (counter);
 }
+void	ft_casethree(t_stack **a)
+{
+	if ((*a)->index > (*a)->next->index
+		&& (*a)->index > (*a)->next->next->index)
+	{
+		ra(a);
+		if ((*a)->index > (*a)->next->index)
+			sa(*a);
+	}
+	else if ((*a)->index < (*a)->next->index
+		&& (*a)->index > (*a)->next->next->index)
+	{
+		rra(a);
+	}
+	else if ((*a)->index > (*a)->next->index
+		&& (*a)->index < (*a)->next->next->index)
+	{
+		sa(*a);
+	}
+	else if ((*a)->index < (*a)->next->index
+		&& (*a)->index < (*a)->next->next->index)
+	{
+		rra(a);
+		sa(*a);
+	}
+}
+void	ft_casefive(t_stack **a, t_stack **b)
+{
+	pb(*a, *b);
+}
+
 int	main(int argc, char **argv)
 {
-	t_tab		*tab;
-	t_stacks	*stacks;
-	t_stack		*current;
+	t_tab *tab;
+	t_stacks *stacks;
+	t_stack *current;
 
 	if (argc < 2)
 	{
@@ -462,35 +493,24 @@ int	main(int argc, char **argv)
 	stacks = (struct s_stacks *)malloc(sizeof(struct s_stacks));
 	if (!stacks)
 		exit(1);
-	
 
 	ft_fill_stacka(&stacks->a, tab);
-	// ft_fill_stacka(&head, tab);
-	ft_something(tab, stacks->a);
-	
-	stacks->b = (struct s_stack *)malloc(sizeof(struct s_stack));
-	
-	stacks->size = tab->len;
 
-	stacks->heada = stacks->a;
-	// stacks->headb = stacks->b;
-	
-	k_sort1(stacks, stacks->size);
-	k_sort2(stacks, stacks->size);
-	
-	// pushh(&stackb, 1, 1);
-	// pushh(&stackb, 2, 2);
-	// pushh(&stackb, 3, 3);
-	// pushh(&stackb, 4, 4);
-	// pushh(&stackb, 5, 5);
-	// sa(current);
-	// rotate(&stackb);
-	// ra(&stackb);
-	// pb(&(stacks->a), &stackb);
-	// pa(&(stacks->a), &stackb);
-			// dprintf(2, "data == %i", stacks->a->data);
-	
+	ft_something(tab, stacks->a);
+
+	stacks->size = tab->len;
+	if (stacks->size == 3)
+		ft_casethree(&stacks->a);
+	else if (stacks->size == 5)
+		ft_casefive(&stacks->a, &stacks->b);
+	else
+	{
+		k_sort1(stacks, stacks->size);
+		k_sort2(stacks, stacks->size);
+	}
+
 	current = stacks->a;
+
 	while (current)
 	{
 		printf("number = %i and index = %i\n", current->data, current->index);
