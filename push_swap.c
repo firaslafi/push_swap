@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/05 00:27:12 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/05 01:12:24 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,9 +176,7 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 		return (0);
 	while (argv[i])
 	{
-		printf("before=%s\n", argv[i]);
 		tab->array[j] = ft_atol(argv[i]);
-		printf("after=%lli\n", tab->array[j]);
 		i++;
 		j++;
 	}
@@ -231,18 +229,19 @@ t_stack	*ft_createnode(int data)
 }
 
 // fn insert a node at the end
-void	ft_insertNode(t_stack **head, int data)
+void	ft_insertNode(t_stack **head, int data, int tmp)
 {
 	t_stack	*newNode;
 	t_stack	*current;
 
 	newNode = ft_createnode(data);
+	
 	if (!newNode)
 	{
 		printf("Memory allocation failed!\n");
 		return ;
 	}
-	if (*head == NULL)
+	if (tmp == 0)
 	{
 		*head = newNode;
 	}
@@ -254,8 +253,6 @@ void	ft_insertNode(t_stack **head, int data)
 			current = current->next;
 		}
 		current->next = newNode;
-		// newNode->next = *head;
-		// head->prev = newNode;
 	}
 }
 // filling stack a obviously
@@ -266,7 +263,7 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 	i = 0;
 	while (tab->len > i)
 	{
-		ft_insertNode(head, (int)tab->array[i]);
+		ft_insertNode(head, (int)tab->array[i], i);
 		i++;
 	}
 }
@@ -496,14 +493,6 @@ void sort_stack_5(t_stack **stack_a, t_stack **stack_b, int length)
 	}
 }
 
-// printf("data = %i and index = %i\n", (*stack_a)->data, (*stack_a)->index);
-
-// void	ft_casefive(t_stack **a, t_stack **b)
-// {
-// 	insertion_sort(a);
-// 	printf("nothing\n");
-// }
-
 int	main(int argc, char **argv)
 {
 	t_tab *tab;
@@ -520,13 +509,13 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 	{
-		// printf("one signle string input\n");
+		printf("one signle string input\n");
 		ft_isnumber_onestring(argv, tab);
 		ft_fillarr_onestr(argv, tab);
 	}
 	if (argc > 2)
 	{
-		// printf("multiple input\n");
+		printf("multiple input\n");
 		ft_isnumber_array(argc - 1, argv);
 		ft_fillarr_array(argv, tab);
 	}
@@ -535,19 +524,30 @@ int	main(int argc, char **argv)
 	if (!stacks)
 		exit(1);
 
+	int i = 0;
+	printf("Table printing below:\n");
+	while(tab->array[i])
+	{
+		printf("Value=%lli\n", tab->array[i]);
+		i++;
+	}
 	ft_fill_stacka(&stacks->a, tab);
 
 	ft_something(tab, stacks->a);
+		current = stacks->a;
 
+	while (current)
+	{
+		printf("number = %i and index = %i\n", current->data, current->index);
+		current = current->next;
+	}
+	exit(0);
+	// dprintf(2, "K.O\n");
 	stacks->size = tab->len;
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
 	else if (stacks->size == 5)
-		{
-			// ft_casefive(&stacks->a, &stacks->b);
 			sort_stack_5(&stacks->a, &stacks->b, stacks->size);
-			// printf("stack size = %i\n", stacks->size);
-		}
 	else
 	{
 		k_sort1(stacks, stacks->size);
@@ -556,11 +556,11 @@ int	main(int argc, char **argv)
 
 	current = stacks->a;
 
-	// while (current)
-	// {
-	// 	printf("number = %i and index = %i\n", current->data, current->index);
-	// 	current = current->next;
-	// }
+	while (current)
+	{
+		printf("number = %i and index = %i\n", current->data, current->index);
+		current = current->next;
+	}
 	printf("\n");
 	return (0);
 }
