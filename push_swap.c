@@ -458,10 +458,33 @@ void	ft_casethree(t_stack **a)
 		sa(*a);
 	}
 }
-void	ft_casefive(t_stack **a, t_stack **b)
-{
-	pb(*a, *b);
+// insertion sort
+void sort_stack(t_stack **stack) {
+    int sorted = 0;
+    t_stack *end = NULL;
+    
+    while (!sorted) {
+        sorted = 1;
+        t_stack *current = *stack;
+        t_stack *prev = NULL;
+        
+        while (current->next != end) {
+            if (current->index > current->next->index) {
+                sa(current);
+                sorted = 0;
+            }
+            prev = current;
+            current = current->next;
+        }
+        
+        end = prev;
+    }
 }
+// void	ft_casefive(t_stack **a, t_stack **b)
+// {
+// 	insertion_sort(a);
+// 	printf("nothing\n");
+// }
 
 int	main(int argc, char **argv)
 {
@@ -502,7 +525,11 @@ int	main(int argc, char **argv)
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
 	else if (stacks->size == 5)
-		ft_casefive(&stacks->a, &stacks->b);
+		{
+			// ft_casefive(&stacks->a, &stacks->b);
+			sort_stack(&stacks->a);
+			printf("stack size = %i\n", stacks->size);
+		}
 	else
 	{
 		k_sort1(stacks, stacks->size);

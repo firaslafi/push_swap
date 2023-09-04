@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "./libft/libft.h"
 #include <limits.h>
 #include <stdio.h>
 
@@ -35,6 +35,7 @@ typedef struct s_tab
 }					t_tab;
 
 long long			ft_atol(const char *str);
+void swap(t_stack *stack);
 void				sa(t_stack *stack_a);
 void				sb(t_stack *stack_b);
 void				ss(t_stack *stack_a, t_stack *stack_b);
