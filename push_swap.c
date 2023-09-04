@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/03 22:17:03 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/05 00:27:12 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_issorted(long long *array)
 	{
 		if (array[i - 1] > array[i])
 		{
-			printf("not sorted, do stuff!\n");
+			// printf("not sorted, do stuff!\n");
 			return (0);
 		}
 		i++;
@@ -458,28 +458,46 @@ void	ft_casethree(t_stack **a)
 		sa(*a);
 	}
 }
-// insertion sort
-void sort_stack(t_stack **stack) {
-    int sorted = 0;
-    t_stack *end = NULL;
-    
-    while (!sorted) {
-        sorted = 1;
-        t_stack *current = *stack;
-        t_stack *prev = NULL;
-        
-        while (current->next != end) {
-            if (current->index > current->next->index) {
-                sa(current);
-                sorted = 0;
-            }
-            prev = current;
-            current = current->next;
-        }
-        
-        end = prev;
-    }
+int is_sorted(t_stack *stack_a)
+{
+	t_stack *stack_aa = stack_a;
+	while (stack_aa->next)
+	{
+		if (stack_aa->index > stack_aa->next->index)
+			return 0;
+		stack_aa = stack_aa->next;
+	}
+	return 1;
 }
+// insertion sort
+void sort_stack_5(t_stack **stack_a, t_stack **stack_b, int length)
+{
+	while(length > 3)
+	{
+		if ((*stack_a)->index == 0 || (*stack_a)->index == 1)
+			{
+				pb(stack_a, stack_b);
+				length--;
+			}
+		else
+			ra(stack_a);	
+	}
+	if (is_sorted(*stack_a) == 0)
+		ft_casethree(stack_a);
+	while(length != 5)
+	{
+		if ((*stack_b)->index == 1 || length == 4)
+			{
+				pa(stack_a, stack_b);
+				length++;
+			}
+		else
+			rb(stack_b);	
+	}
+}
+
+// printf("data = %i and index = %i\n", (*stack_a)->data, (*stack_a)->index);
+
 // void	ft_casefive(t_stack **a, t_stack **b)
 // {
 // 	insertion_sort(a);
@@ -502,13 +520,13 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 	{
-		printf("one signle string input\n");
+		// printf("one signle string input\n");
 		ft_isnumber_onestring(argv, tab);
 		ft_fillarr_onestr(argv, tab);
 	}
 	if (argc > 2)
 	{
-		printf("multiple input\n");
+		// printf("multiple input\n");
 		ft_isnumber_array(argc - 1, argv);
 		ft_fillarr_array(argv, tab);
 	}
@@ -527,8 +545,8 @@ int	main(int argc, char **argv)
 	else if (stacks->size == 5)
 		{
 			// ft_casefive(&stacks->a, &stacks->b);
-			sort_stack(&stacks->a);
-			printf("stack size = %i\n", stacks->size);
+			sort_stack_5(&stacks->a, &stacks->b, stacks->size);
+			// printf("stack size = %i\n", stacks->size);
 		}
 	else
 	{
@@ -538,11 +556,11 @@ int	main(int argc, char **argv)
 
 	current = stacks->a;
 
-	while (current)
-	{
-		printf("number = %i and index = %i\n", current->data, current->index);
-		current = current->next;
-	}
+	// while (current)
+	// {
+	// 	printf("number = %i and index = %i\n", current->data, current->index);
+	// 	current = current->next;
+	// }
 	printf("\n");
 	return (0);
 }
