@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/05 23:59:16 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/06 00:09:36 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,7 +268,7 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 		i++;
 	}
 }
-// bubble sort to set indexs
+// bubble sort to set indexss
 int	*ft_bubblesort(int *arr, int n)
 {
 	int	temp;
