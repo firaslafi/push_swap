@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/05 01:12:24 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/05 23:59:16 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,7 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 	i = 0;
 	while (tab->len > i)
 	{
+		printf("data in side fillstack = {%i}\n", (int)tab->array[i]);
 		ft_insertNode(head, (int)tab->array[i], i);
 		i++;
 	}
@@ -528,10 +529,12 @@ int	main(int argc, char **argv)
 	printf("Table printing below:\n");
 	while(tab->array[i])
 	{
-		printf("Value=%lli\n", tab->array[i]);
+		printf("Value={%lli}\n", tab->array[i]);
 		i++;
 	}
+	printf("*-----------------------*\n");
 	ft_fill_stacka(&stacks->a, tab);
+	exit(0);
 
 	ft_something(tab, stacks->a);
 		current = stacks->a;
@@ -542,7 +545,7 @@ int	main(int argc, char **argv)
 		current = current->next;
 	}
 	exit(0);
-	// dprintf(2, "K.O\n");
+	dprintf(2, "K.O\n");
 	stacks->size = tab->len;
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
