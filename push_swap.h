@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/06 20:20:50 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/06 23:11:55 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,3 +60,6 @@ int					count_r(t_stack *stack, int index);
 void				ft_casethree(t_stack **a);
 void				sort_stack_5(t_stack **stack_a, t_stack **stack_b,
 						int length);
+int	*ft_bubblesort(int *arr, int n);
+void	ft_match(int *arr_cpy, t_stack *stack);
+void	ft_copynmatch(t_tab *tab, t_stack *stack);						

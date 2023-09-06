@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/06 20:26:51 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/06 23:10:50 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,87 +193,7 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 		i++;
 	}
 }
-// bubble sort to set indexss
-int	*ft_bubblesort(int *arr, int n)
-{
-	int	temp;
-	int	i;
-	int	j;
 
-	i = 0;
-	int swapped = 1; // Initialize swapped to 1 to enter the loop
-	while (i < n - 1 && swapped)
-	{
-		swapped = 0; // Reset the swapped flag at the beginning of each pass
-		j = 0;
-		while (j < n - i - 1)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				// Swap arr[j] and arr[j + 1]
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-				swapped = 1; // Set the swapped flag to indicate a swap occurred
-			}
-			j++;
-		}
-		i++;
-	}
-	return (arr);
-}
-// matching copies and real stack int
-void	ft_match(int *arr_cpy, t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack->next)
-	{
-		while (arr_cpy[i])
-		{
-			if (arr_cpy[i] == stack->data)
-			{
-				stack->index = i;
-				break ;
-			}
-			i++;
-		}
-		i = 0;
-		stack = stack->next;
-		if (!stack->next)
-		{
-			while (arr_cpy[i])
-			{
-				if (arr_cpy[i] == stack->data)
-				{
-					stack->index = i;
-					break ;
-				}
-				i++;
-			}
-		}
-	}
-}
-
-// making a copy of the numbers, sorting them
-// and setting them to their place + isSorted
-void	ft_something(t_tab *tab, t_stack *stack)
-{
-	int	i;
-	int	*arr_cpy;
-
-	i = 0;
-	arr_cpy = malloc(tab->len * sizeof(int));
-	while (tab->array[i])
-	{
-		arr_cpy[i] = tab->array[i];
-		i++;
-	}
-	arr_cpy = ft_bubblesort(arr_cpy, tab->len);
-	ft_match(arr_cpy, stack);
-	free(arr_cpy);
-}
 
 int	main(int argc, char **argv)
 {
@@ -305,7 +225,7 @@ int	main(int argc, char **argv)
 	if (!stacks)
 		exit(1);
 	ft_fill_stacka(&stacks->a, tab);
-	ft_something(tab, stacks->a);
+	ft_copynmatch(tab, stacks->a);
 	stacks->size = tab->len;
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
