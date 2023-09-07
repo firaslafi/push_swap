@@ -6,20 +6,21 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:58:57 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/07 21:27:51 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/08 00:18:36 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
 // filling str to use split on it later on with ' '
 char	*ft_fill_str(int count, char **argv)
 {
 	int		i;
-	char	*result;
+	char	*result ;
+	strcpy(result, argv[0]);
 
-	i = 1;
-	result = ft_strdup("");
+	i = 2;
 	while (count--)
 	{
 		result = ft_strjoin(result, argv[i]);
@@ -66,6 +67,11 @@ int	ft_isnumber_array(int count, char **argv, t_tab *tab)
 	str = ft_fill_str(count, argv);
 	if (!ft_checksign(str))
 		return (0);
+    free(str);
+    free(tab->array);
+	free(tab);
+	system("leaks push_swap");
+    exit(0);
 	array = ft_split(str, ' ');
 	ft_nb_arr_helper(array, tab);
 	return (1);

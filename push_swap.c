@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/07 21:22:39 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/07 23:36:16 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 	{
 		ft_isnumber_array(argc - 1, argv, tab);
+		// system("leaks push_swap");
 		ft_fillarr_array(argv, tab);
 	}
 	ft_checkduplicate_limit(tab);
@@ -97,6 +98,8 @@ int	main(int argc, char **argv)
 	ft_fill_stacka(&stacks->a, tab);
 	ft_copynmatch(tab, stacks->a);
 	stacks->size = tab->len;
+	// free(tab->array);
+	// free(tab);
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
 	else if (stacks->size == 5)
@@ -106,12 +109,12 @@ int	main(int argc, char **argv)
 		k_sort1(stacks, stacks->size);
 		k_sort2(stacks, stacks->size);
 	}
+	// system("leaks push_swap");
 	// current = stacks->a;
 	// while (current)
 	// {
 	// 	printf("number = %i and index = %i\n", current->data, current->index);
 	// 	current = current->next;
 	// }
-	printf("\n");
 	return (0);
 }

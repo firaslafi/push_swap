@@ -6,13 +6,13 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 04:54:03 by flafi             #+#    #+#             */
-/*   Updated: 2023/07/24 20:41:30 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/07 23:57:04 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*result;
 	size_t	i;
@@ -37,5 +37,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		result[ft_strlen(s1) + i] = s2[i];
 	}
 	result[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
+	free(s2);
 	return (result);
 }
