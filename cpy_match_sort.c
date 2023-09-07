@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cpy_ma_sort.c                                      :+:      :+:    :+:   */
+/*   cpy_match_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 23:11:20 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/06 23:19:22 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/07 21:24:37 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int	*ft_bubblesort(int *arr, int n)
 	int	temp;
 	int	i;
 	int	j;
+	int	swapped;
 
 	i = 0;
-	int swapped = 1; // Initialize swapped to 1 to enter the loop
+	swapped = 1;
 	while (i < n - 1 && swapped)
 	{
-		swapped = 0; // Reset the swapped flag at the beginning of each pass
+		swapped = 0;
 		j = 0;
 		while (j < n - i - 1)
 		{
 			if (arr[j] > arr[j + 1])
 			{
-				// Swap arr[j] and arr[j + 1]
 				temp = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = temp;
-				swapped = 1; // Set the swapped flag to indicate a swap occurred
+				swapped = 1;
 			}
 			j++;
 		}
@@ -87,7 +87,7 @@ void	ft_match(int *arr_cpy, t_stack *stack)
 				i++;
 			}
 		}
-}
+	}
 }
 
 // making a copy of the numbers, sorting them

@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:10:49 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/06 20:20:28 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/07 21:28:44 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	count_r(t_stack *stack, int index)
 	}
 	return (counter);
 }
+
 void	ft_casethree(t_stack **a)
 {
 	if ((*a)->index > (*a)->next->index

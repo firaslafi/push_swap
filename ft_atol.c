@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 22:32:43 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/06 00:19:30 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/07 21:26:57 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_issign(const char *str)
 long	ft_atol(const char *str)
 {
 	long	result;
-	int			sign;
+	int		sign;
 
 	result = 0;
 	sign = 1;

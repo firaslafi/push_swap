@@ -6,13 +6,16 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/06 23:11:55 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/07 21:25:11 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include <limits.h>
-#include <stdio.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include "./libft/libft.h"
+# include <limits.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -60,6 +63,13 @@ int					count_r(t_stack *stack, int index);
 void				ft_casethree(t_stack **a);
 void				sort_stack_5(t_stack **stack_a, t_stack **stack_b,
 						int length);
-int	*ft_bubblesort(int *arr, int n);
-void	ft_match(int *arr_cpy, t_stack *stack);
-void	ft_copynmatch(t_tab *tab, t_stack *stack);						
+int					*ft_bubblesort(int *arr, int n);
+void				ft_match(int *arr_cpy, t_stack *stack);
+void				ft_copynmatch(t_tab *tab, t_stack *stack);
+int					ft_isnumber_onestring(char **argv, t_tab *tab);
+int					ft_fillarr_array(char **argv, t_tab *tab);
+int					ft_isnumber_array(int count, char **argv, t_tab *tab);
+int					ft_nb_arr_helper(char **array, t_tab *tab);
+char				*ft_fill_str(int count, char **argv);
+int					ft_fillarr_onestr(char **argv, t_tab *tab);
+#endif
