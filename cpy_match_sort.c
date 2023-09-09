@@ -99,7 +99,7 @@ void	ft_copynmatch(t_tab *tab, t_stack *stack)
 
 	i = 0;
 	arr_cpy = malloc(tab->len * sizeof(int));
-	while (tab->array[i])
+	while (i < tab->len)
 	{
 		arr_cpy[i] = tab->array[i];
 		i++;

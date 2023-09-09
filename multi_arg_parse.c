@@ -17,10 +17,9 @@
 char	*ft_fill_str(int count, char **argv)
 {
 	int		i;
-	char	*result ;
-	strcpy(result, argv[0]);
+	char	*result;
 
-	i = 2;
+	i = 1;
 	while (count--)
 	{
 		result = ft_strjoin(result, argv[i]);
@@ -29,7 +28,6 @@ char	*ft_fill_str(int count, char **argv)
 	}
 	return (result);
 }
-
 // helper function to loop through the splited array
 int	ft_nb_arr_helper(char **array, t_tab *tab)
 {
@@ -67,12 +65,8 @@ int	ft_isnumber_array(int count, char **argv, t_tab *tab)
 	str = ft_fill_str(count, argv);
 	if (!ft_checksign(str))
 		return (0);
-    free(str);
-    free(tab->array);
-	free(tab);
-	system("leaks push_swap");
-    exit(0);
 	array = ft_split(str, ' ');
+    free(str);
 	ft_nb_arr_helper(array, tab);
 	return (1);
 }
@@ -85,6 +79,7 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 
 	i = 1;
 	j = 0;
+	// printf("size = %i\n", tab->len);
 	tab->array = (long *)malloc((sizeof(long) * tab->len));
 	if (!tab->array)
 		return (0);

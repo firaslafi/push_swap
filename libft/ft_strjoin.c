@@ -19,25 +19,23 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	l1;
 	size_t	l2;
 
-	i = -1;
+	if (!s1)
+	{
+		s1 = (char *) malloc(1 * sizeof(char));
+		*s1 = '\0';
+	}
+	if (!s1 || !s2)
+		return (NULL);
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
-	if (!s1 && !s2)
-		return (NULL);
-	result = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	result = (char *) malloc(l1 + l2 + 1);
 	if (!result)
 		return (NULL);
+	i = -1;
 	while (++i <= l1)
-	{
 		result[i] = s1[i];
-	}
 	i = -1;
 	while (++i <= l2)
-	{
-		result[ft_strlen(s1) + i] = s2[i];
-	}
-	result[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	free(s1);
-	free(s2);
-	return (result);
+		result[l1 + i] = s2[i];
+	return (result[l1 + l2] = '\0', free(s1), result);
 }

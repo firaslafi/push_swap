@@ -88,7 +88,6 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 	{
 		ft_isnumber_array(argc - 1, argv, tab);
-		// system("leaks push_swap");
 		ft_fillarr_array(argv, tab);
 	}
 	ft_checkduplicate_limit(tab);
@@ -98,8 +97,10 @@ int	main(int argc, char **argv)
 	ft_fill_stacka(&stacks->a, tab);
 	ft_copynmatch(tab, stacks->a);
 	stacks->size = tab->len;
+	
 	// free(tab->array);
 	// free(tab);
+	system("leaks push_swap");
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
 	else if (stacks->size == 5)
@@ -109,6 +110,9 @@ int	main(int argc, char **argv)
 		k_sort1(stacks, stacks->size);
 		k_sort2(stacks, stacks->size);
 	}
+	// free(stacks);
+	// printf("here is the batch thingy\n");
+	// exit(1);
 	// system("leaks push_swap");
 	// current = stacks->a;
 	// while (current)
