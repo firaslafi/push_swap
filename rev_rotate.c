@@ -14,7 +14,6 @@
 
 void	rev_rotate(t_stack **stack)
 {
-	t_stack	*tmp;
 	t_stack	*last;
 	t_stack	*head;
 	t_stack	*before_last;
@@ -22,7 +21,6 @@ void	rev_rotate(t_stack **stack)
 	if ((*stack)->next == NULL)
 		return ;
 	head = (*stack);
-	tmp = (*stack)->next;
 	last = (*stack);
 	while (last->next)
 	{
