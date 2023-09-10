@@ -6,18 +6,18 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 23:28:59 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:30:27 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/10 23:56:08 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void free_split(char **array)
+void	free_split(char **array)
 {
-    int i;
+	int	i;
 
-    i = 0;
-	while(array[i])
+	i = 0;
+	while (array[i])
 	{
 		free(array[i]);
 		i++;

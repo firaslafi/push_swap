@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:57:36 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:33:13 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/10 23:53:35 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_isnumber_onestring(char **argv, t_tab *tab)
 			else
 			{
 				printf("Error: %c it is not digit or sign\n", array[i][j]);
-				exit (1);
+				exit(1);
 			}
 		}
 		j = 0;
@@ -62,5 +62,4 @@ int	ft_fillarr_onestr(char **argv, t_tab *tab)
 		exit(0);
 	free_split(str);
 	return (1);
-	
 }

@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:39:34 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/10 23:52:18 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ int	main(int argc, char **argv)
 	stacks->b = malloc(sizeof(t_stack));
 	ft_copynmatch(tab, stacks->a);
 	stacks->size = tab->len;
-	// free(tab->array);
-	// free(tab);
+	free(tab->array);
+	free(tab);
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
 	else if (stacks->size == 5)

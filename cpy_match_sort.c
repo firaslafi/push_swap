@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 23:11:20 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/07 23:15:42 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/11 00:03:51 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,23 @@ int	*ft_bubblesort(int *arr, int n)
 	}
 	return (arr);
 }
-// void ft_set_index(int *arr_cpy, t_stack *stack)
-// {
-//     int i;
 
-//     i = 0;
-//     while (arr_cpy[i])
-//     {
-//         if (arr_cpy[i] == stack->data)
-//         {
-//             stack->index = i;
-//             break ;
-//         }
-//         i++;
-//     }
-// }
+void	ft_set_index(int *arr_cpy, t_stack **stack)
+{
+	int	i;
+
+	i = 0;
+	while (arr_cpy[i])
+	{
+		if (arr_cpy[i] == (*stack)->data)
+		{
+			(*stack)->index = i;
+			break ;
+		}
+		i++;
+	}
+}
+
 // matching copies and real stack int
 void	ft_match(int *arr_cpy, t_stack *stack)
 {
@@ -73,20 +75,8 @@ void	ft_match(int *arr_cpy, t_stack *stack)
 			}
 			i++;
 		}
-		i = 0;
 		stack = stack->next;
-		if (!stack->next)
-		{
-			while (arr_cpy[i])
-			{
-				if (arr_cpy[i] == stack->data)
-				{
-					stack->index = i;
-					break ;
-				}
-				i++;
-			}
-		}
+		ft_set_index(arr_cpy, &stack);
 	}
 }
 
