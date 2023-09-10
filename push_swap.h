@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/07 21:25:11 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/10 23:31:03 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ int					ft_isnumber_array(int count, char **argv, t_tab *tab);
 int					ft_nb_arr_helper(char **array, t_tab *tab);
 char				*ft_fill_str(int count, char **argv);
 int					ft_fillarr_onestr(char **argv, t_tab *tab);
+void				free_split(char **array);
 #endif

@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/07 23:36:16 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/10 23:39:34 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,25 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 		i++;
 	}
 }
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
 
+	if (!stack || !(*stack))
+		return ;
+	while ((*stack)->next)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
 int	main(int argc, char **argv)
 {
 	t_tab		*tab;
 	t_stacks	*stacks;
 
-	// t_stack *current;
 	if (argc < 2)
 	{
 		printf("Error\n");
@@ -81,7 +93,6 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 	{
-		// printf("one signle string input\n");
 		ft_isnumber_onestring(argv, tab);
 		ft_fillarr_onestr(argv, tab);
 	}
@@ -95,12 +106,11 @@ int	main(int argc, char **argv)
 	if (!stacks)
 		exit(1);
 	ft_fill_stacka(&stacks->a, tab);
+	stacks->b = malloc(sizeof(t_stack));
 	ft_copynmatch(tab, stacks->a);
 	stacks->size = tab->len;
-	
 	// free(tab->array);
 	// free(tab);
-	system("leaks push_swap");
 	if (stacks->size == 3)
 		ft_casethree(&stacks->a);
 	else if (stacks->size == 5)
@@ -110,15 +120,9 @@ int	main(int argc, char **argv)
 		k_sort1(stacks, stacks->size);
 		k_sort2(stacks, stacks->size);
 	}
+	// free_stack(&stacks->a);
+	// free_stack(&stacks->b);
 	// free(stacks);
-	// printf("here is the batch thingy\n");
-	// exit(1);
-	// system("leaks push_swap");
-	// current = stacks->a;
-	// while (current)
-	// {
-	// 	printf("number = %i and index = %i\n", current->data, current->index);
-	// 	current = current->next;
-	// }
+	system("leaks push_swap");
 	return (0);
 }

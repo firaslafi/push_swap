@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:10:49 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/07 21:28:44 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/10 20:39:07 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	k_sort1(t_stacks *stacks, int length)
 			i++;
 		}
 		else
-			ra(&stacks->a);
+			{
+
+				ra(&stacks->a);
+			}
 	}
 }
 

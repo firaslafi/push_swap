@@ -7,6 +7,7 @@
         "string_view": "c",
         "vector": "c",
         "iterator": "c",
-        "push_swap.h": "c"
+        "push_swap.h": "c",
+        "__tuple": "c"
     }
 }
