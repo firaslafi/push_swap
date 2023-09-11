@@ -15,32 +15,32 @@
 // Function to create a new node
 t_stack	*ft_createnode(int data)
 {
-	t_stack	*newNode;
+	t_stack	*new_node;
 
-	newNode = (t_stack *)malloc(sizeof(t_stack));
-	if (newNode)
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (new_node)
 	{
-		newNode->data = data;
-		newNode->next = NULL;
+		new_node->data = data;
+		new_node->next = NULL;
 	}
-	return (newNode);
+	return (new_node);
 }
 
 // fn insert a node at the end
 void	ft_insert_node(t_stack **head, int data, int tmp)
 {
-	t_stack	*newNode;
+	t_stack	*new_node;
 	t_stack	*current;
 
-	newNode = ft_createnode(data);
-	if (!newNode)
+	new_node = ft_createnode(data);
+	if (!new_node)
 	{
 		printf("Memory allocation failed!\n");
 		return ;
 	}
 	if (tmp == 0)
 	{
-		*head = newNode;
+		*head = new_node;
 	}
 	else
 	{
@@ -49,9 +49,10 @@ void	ft_insert_node(t_stack **head, int data, int tmp)
 		{
 			current = current->next;
 		}
-		current->next = newNode;
+		current->next = new_node;
 	}
 }
+
 // filling stack a obviously
 void	ft_fill_stacka(t_stack **head, t_tab *tab)
 {
@@ -64,6 +65,7 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 		i++;
 	}
 }
+
 void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -78,6 +80,7 @@ void	free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
+
 int	main(int argc, char **argv)
 {
 	t_tab		*tab;
@@ -120,9 +123,9 @@ int	main(int argc, char **argv)
 		k_sort1(stacks, stacks->size);
 		k_sort2(stacks, stacks->size);
 	}
-	// free_stack(&stacks->a);
-	// free_stack(&stacks->b);
-	// free(stacks);
-	system("leaks push_swap");
+	free_stack(&stacks->a);
+	free_stack(&stacks->b);
+	free(stacks);
+	// system("leaks push_swap");
 	return (0);
 }
