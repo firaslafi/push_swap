@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 23:11:20 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/11 00:03:51 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/11 23:21:20 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	ft_copynmatch(t_tab *tab, t_stack *stack)
 
 	i = 0;
 	arr_cpy = malloc(tab->len * sizeof(int));
+	if (!arr_cpy)
+		exit(1);
 	while (i < tab->len)
 	{
 		arr_cpy[i] = tab->array[i];

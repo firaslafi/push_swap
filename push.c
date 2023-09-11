@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:55:30 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/07 21:26:11 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/11 23:09:09 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	push(t_stack **source, t_stack **destination)
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_b, stack_a);
-	printf("pa\n");
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
-	printf("pb\n");
+	ft_printf("pb\n");
 }

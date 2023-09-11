@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:58:57 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:55:28 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/11 23:21:44 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	ft_nb_arr_helper(char **array, t_tab *tab)
 				j++;
 			else
 			{
-				printf("Error\n");
-				printf("Invalid numerical input\n");
+				ft_error("Invalid numerical input");
 				exit(0);
 			}
 		}
@@ -82,7 +81,7 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 	j = 0;
 	tab->array = (long *)malloc((sizeof(long) * tab->len));
 	if (!tab->array)
-		return (0);
+		exit (0);
 	while (argv[i])
 	{
 		tab->array[j] = ft_atol(argv[i]);

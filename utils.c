@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:02:04 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:24:28 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/11 23:14:05 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	ft_checksign(char *str)
 		{
 			if (str[i - 1] != ' ' && i != 0)
 			{
-				printf("Error\n");
-				printf("Sign problem\n");
+				ft_error("Sign problem");
 				return (0);
 			}
 		}
@@ -56,7 +55,7 @@ int	ft_issorted(long *array)
 		}
 		i++;
 	}
-	printf("Stack is Sorted! nothing to do.\n");
+	ft_error("Stack is Sorted! nothing to do.\n");
 	return (1);
 }
 
@@ -71,7 +70,7 @@ int	ft_checkduplicate_limit(t_tab *tab)
 	{
 		if (tab->array[i] < INT_MIN || tab->array[i] > INT_MAX)
 		{
-			printf("int out of boundries!\n");
+			ft_error("int out of boundries!");
 			exit(1);
 		}
 		j = i + 1;
@@ -79,7 +78,7 @@ int	ft_checkduplicate_limit(t_tab *tab)
 		{
 			if (tab->array[i] == tab->array[j])
 			{
-				printf("duplicate found!\n");
+				ft_error("duplicate found!");
 				exit(1);
 			}
 			j++;

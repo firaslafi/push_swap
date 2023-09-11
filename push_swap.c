@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:52:18 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/11 23:37:42 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_insert_node(t_stack **head, int data, int tmp)
 	new_node = ft_createnode(data);
 	if (!new_node)
 	{
-		printf("Memory allocation failed!\n");
+		ft_error("Memory allocation failed!");
 		return ;
 	}
 	if (tmp == 0)
@@ -66,19 +66,25 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 	}
 }
 
-void	free_stack(t_stack **stack)
+void	ft_alloc_sort(t_tab *tab, t_stacks *stacks)
 {
-	t_stack	*tmp;
-
-	if (!stack || !(*stack))
-		return ;
-	while ((*stack)->next)
+	ft_fill_stacka(&stacks->a, tab);
+	(stacks)->b = malloc(sizeof(t_stack));
+	if (!stacks->b)
+		exit(1);
+	ft_copynmatch(tab, stacks->a);
+	stacks->size = tab->len;
+	free(tab->array);
+	free(tab);
+	if (stacks->size == 3)
+		ft_casethree(&stacks->a);
+	else if (stacks->size == 5)
+		sort_stack_5(&stacks->a, &stacks->b, stacks->size);
+	else
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		k_sort1(stacks, stacks->size);
+		k_sort2(stacks, stacks->size);
 	}
-	*stack = NULL;
 }
 
 int	main(int argc, char **argv)
@@ -87,10 +93,7 @@ int	main(int argc, char **argv)
 	t_stacks	*stacks;
 
 	if (argc < 2)
-	{
-		printf("Error\n");
-		return (0);
-	}
+		exit(1);
 	tab = (struct s_tab *)malloc(sizeof(struct s_tab));
 	if (!tab)
 		return (0);
@@ -108,24 +111,25 @@ int	main(int argc, char **argv)
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (!stacks)
 		exit(1);
-	ft_fill_stacka(&stacks->a, tab);
-	stacks->b = malloc(sizeof(t_stack));
-	ft_copynmatch(tab, stacks->a);
-	stacks->size = tab->len;
-	free(tab->array);
-	free(tab);
-	if (stacks->size == 3)
-		ft_casethree(&stacks->a);
-	else if (stacks->size == 5)
-		sort_stack_5(&stacks->a, &stacks->b, stacks->size);
-	else
-	{
-		k_sort1(stacks, stacks->size);
-		k_sort2(stacks, stacks->size);
-	}
-	free_stack(&stacks->a);
-	free_stack(&stacks->b);
-	free(stacks);
-	// system("leaks push_swap");
+	ft_alloc_sort(tab, stacks);
+	system("leaks push_swap");
 	return (0);
 }
+
+// void	free_stack(t_stack **stack)
+// {
+// 	t_stack	*tmp;
+
+// 	if (!stack || !(*stack))
+// 		return ;
+// 	while ((*stack)->next)
+// 	{
+// 		tmp = (*stack)->next;
+// 		free(*stack);
+// 		*stack = tmp;
+// 	}
+// 	*stack = NULL;
+// }
+// free_stack(&stacks->a);
+// free_stack(&stacks->b);
+// free(stacks);

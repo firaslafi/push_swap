@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:31:03 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/11 23:38:03 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
+# include "./printf/ft_printf.h"
 # include <limits.h>
-# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -73,4 +73,5 @@ int					ft_nb_arr_helper(char **array, t_tab *tab);
 char				*ft_fill_str(int count, char **argv);
 int					ft_fillarr_onestr(char **argv, t_tab *tab);
 void				free_split(char **array);
+void				ft_error(char *str);
 #endif
