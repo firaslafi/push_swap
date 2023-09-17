@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 23:11:20 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 12:22:46 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/17 16:51:50 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,28 @@ void	ft_set_index(int *arr_cpy, t_stack **stack)
 }
 
 // matching copies and real stack int
-void	ft_match(int *arr_cpy, t_stack *stack)
+void	ft_match(int *arr_cpy, t_stack *stack, int len)
 {
 	int	i;
-
+	int j;
 	i = 0;
-	while (stack->next)
+	j = 0;
+
+	while (i < len )
 	{
-		while (arr_cpy[i])
+		while (j < len)
 		{
-			if (arr_cpy[i] == stack->data)
+			if (arr_cpy[j] == stack->data)
 			{
-				stack->index = i;
+				stack->index = j;
 				break ;
 			}
-			i++;
+			j++;
 		}
-		stack = stack->next;
+		j = 0;
+		i++;
+		if (stack->next)
+			stack = stack->next;
 		ft_set_index(arr_cpy, &stack);
 	}
 }
@@ -97,6 +102,7 @@ void	ft_copynmatch(t_tab *tab, t_stack *stack)
 		i++;
 	}
 	arr_cpy = ft_bubblesort(arr_cpy, tab->len);
-	ft_match(arr_cpy, stack);
+
+	ft_match(arr_cpy, stack, tab->len);
 	free(arr_cpy);
 }

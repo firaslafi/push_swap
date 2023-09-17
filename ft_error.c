@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:46:51 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/16 15:40:36 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/17 17:03:48 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_error(char *str)
 {
 	ft_putstr_fd("Error\n", 2);
+	// ft_printf("%s\n", str);
 	(void)str;
 	return (EXIT_FAILURE);
 }

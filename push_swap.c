@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 14:35:36 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/17 16:52:26 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	ft_print_stk(t_stack *stk)
 	ft_printf("Stack nodes:\n");
 	while (tmp != NULL)
 	{
-		ft_printf("Number: %i ===> Index: %i\n",
-			tmp->data, tmp->index);
+		ft_printf("Number: %i ===> Index: %i\n", tmp->data, tmp->index);
 			tmp = tmp->next;
 	}
 }
@@ -52,7 +51,7 @@ void	ft_insert_node(t_stack **head, int data, int tmp)
 {
 	t_stack	*new_node;
 	t_stack	*current;
-
+	
 	new_node = ft_createnode(data);
 	if (!new_node)
 	{
@@ -164,7 +163,13 @@ int	main(int argc, char **argv)
 	}
 	
 	ft_checkduplicate_limit(tab);
-
+	// int i = 0;
+	// while(tab->len > i)
+	// {
+	// 	printf("value = %li\n", tab->array[i]);
+	// 	i++;
+	// }
+	// exit(0);
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (!stacks)
 		exit(1);
