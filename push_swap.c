@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 12:59:17 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/17 13:57:17 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,17 +168,16 @@ int	main(int argc, char **argv)
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (!stacks)
 		exit(1);
-	
 	ft_alloc_sort(tab, stacks);
 
-	ft_print_stk(stacks->a);
+	// ft_print_stk(stacks->a);
 	// ft_print_stk(stacks->b);
-	free_stack(&stacks->a);
-	ft_print_stk(stacks->a);
+	// free_stack(&stacks->a);
+	// ft_print_stk(stacks->a);
 
 	// free_stack(&stacks->b);
 	// free(stacks);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (0);
 }
 // sign leak 

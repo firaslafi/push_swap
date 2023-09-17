@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:02:04 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 12:40:11 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/17 13:54:31 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_issorted(long *array)
 		}
 		i++;
 	}
-	ft_putstr_fd("Stack is Sorted! nothing to do.\n", 1);
+	ft_error("Stack is Sorted! nothing to do.\n");
 	return (1);
 }
 
