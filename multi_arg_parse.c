@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:58:57 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/11 23:21:44 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/16 17:21:28 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 
 	i = 1;
 	j = 0;
-	tab->array = (long *)malloc((sizeof(long) * tab->len));
+
+	tab->array = malloc((sizeof(long) * (tab->len)));
 	if (!tab->array)
 		exit (0);
 	while (argv[i])
@@ -88,7 +89,8 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 		i++;
 		j++;
 	}
-	tab->len = j;
+	tab->array[j] = '\0';
+
 	if (ft_issorted(tab->array))
 		exit(0);
 	return (1);

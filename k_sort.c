@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:10:49 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/10 23:54:50 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/17 12:28:13 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	k_sort1(t_stacks *stacks, int length)
 	int	range;
 
 	i = 0;
-	range = ft_sqrt(length) * 14 / 10;
+	
+	range = ft_sqrt(length) * 1.42;
 	while (stacks->a)
 	{
 		if (stacks->a->index <= i)
@@ -34,6 +35,7 @@ void	k_sort1(t_stacks *stacks, int length)
 		}
 		else
 			ra(&stacks->a);
+	
 	}
 }
 

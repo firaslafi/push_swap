@@ -6,15 +6,15 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 22:46:51 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/11 23:00:54 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/16 15:40:36 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(char *str)
+int	ft_error(char *str)
 {
-	ft_printf("Error\n");
-	ft_printf("%s\n", str);
-	exit(0);
+	ft_putstr_fd("Error\n", 2);
+	(void)str;
+	return (EXIT_FAILURE);
 }

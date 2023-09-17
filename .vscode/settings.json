@@ -8,6 +8,7 @@
         "vector": "c",
         "iterator": "c",
         "push_swap.h": "c",
-        "__tuple": "c"
+        "__tuple": "c",
+        "limits.h": "c"
     }
 }
