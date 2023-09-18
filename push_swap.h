@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 16:28:57 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 14:14:54 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ typedef struct s_stack
 	int				data;
 	int				index;
 	struct s_stack	*next;
+	struct s_stack			*a;
+	struct s_stack			*b;
+	int				size;
 }					t_stack;
 
-typedef struct s_stacks
-{
-	t_stack			*a;
-	t_stack			*b;
-	int				size;
-}					t_stacks;
+// typedef struct s_stacks
+// {
+// }					t_stacks;
 
 typedef struct s_tab
 {
@@ -54,11 +54,11 @@ void				rrr(t_stack **stacka, t_stack **stackb);
 int					ft_sqrt(int nb);
 int					ft_isdigitsign(char c);
 int					ft_checksign(char *str);
-int					ft_issorted(long *array);
+int					ft_issorted(t_tab *tab);
 int					is_sorted(t_stack *stack_a);
 int					ft_checkduplicate_limit(t_tab *tab);
-void				k_sort1(t_stacks *stacks, int length);
-void				k_sort2(t_stacks *stacks, int length);
+void				k_sort1(t_stack *stacks, int length);
+void				k_sort2(t_stack *stacks, int length);
 int					count_r(t_stack *stack, int index);
 void				ft_casethree(t_stack **a);
 void				sort_stack_5(t_stack **stack_a, t_stack **stack_b,

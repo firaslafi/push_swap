@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:02:04 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 17:04:30 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 15:15:45 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_checksign(char *str)
 	int	i;
 
 	i = 0;
+	// if (str[i] == '+' || str[i] == '-')
+	// 	ft_error("bb");
 	while (str[i])
 	{
 		if (str[i] == '+' || str[i] == '-')
@@ -42,16 +44,18 @@ int	ft_checksign(char *str)
 	return (1);
 }
 
-int	ft_issorted(long *array)
+int	ft_issorted(t_tab *tab)
 {
 	int	i;
 
 	i = 1;
-	while (array[i])
+	while (i < tab->len)
 	{
-		if (array[i - 1] > array[i])
+		// printf("the case is i = %li and i - 1 = %li\n", array[i], array[i - 1]);
+		if (tab->array[i - 1] > tab->array[i])
 		{
 			return (0);
+			
 		}
 		i++;
 	}
@@ -68,11 +72,15 @@ int	ft_checkduplicate_limit(t_tab *tab)
 	i = 0;
 	while (i < tab->len)
 	{
-		if (tab->array[i] < INT_MIN || tab->array[i] > INT_MAX)
+		if (tab->array[i] < -2147483648 || tab->array[i] > 2147483647)
 		{
-			ft_error("int out of boundries!");
+		
+			ft_error("int out of boundries!\n");
+			// printf("int out of boundries!\n");
+			
 			exit(1);
 		}
+		// printf("value = %ld\n", tab->array[i]);
 		j = i + 1;
 		while (j < tab->len)
 		{

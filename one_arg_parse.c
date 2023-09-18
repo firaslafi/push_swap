@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:57:36 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/16 17:55:32 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 15:13:52 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isnumber_onestring(char **argv, t_tab *tab)
 	int		j;
 
 	if (!ft_checksign(argv[1]))
-		return (0);
+		ft_error("bb");
 	array = ft_split(argv[1], ' ');
 	i = 0;
 	j = 0;
@@ -53,14 +53,17 @@ int	ft_fillarr_onestr(char **argv, t_tab *tab)
 	if (!tab->array)
 		return (0);
 	i = 0;
+
 	while (str[i])
 	{
 		tab->array[i] = ft_atol(str[i]);
 		i++;
 	}
 	tab->array[i] = '\0';
-	if (ft_issorted(tab->array))
+	ft_checkduplicate_limit(tab);
+	if (ft_issorted(tab))
 		exit(0);
 	free_split(str);
+
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/18 12:59:17 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 15:27:57 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,14 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 	i = 0;
 	while (tab->len > i)
 	{	
+		printf("vvvvvvvvvvvvvv, %i\n", tab->len);
+		
 		ft_insert_node(head, (int)tab->array[i], i);
 		i++;
 	}
 }
 
-void    sorting_4(t_stacks *stacks)
+void    sorting_4(t_stack *stacks)
 {
     int n;
 
@@ -100,13 +102,14 @@ void    sorting_4(t_stacks *stacks)
     pa(&stacks->a, &stacks->b);
 }
 
-void	ft_alloc_sort(t_tab *tab, t_stacks *stacks)
+void	ft_alloc_sort(t_tab *tab, t_stack *stacks)
 {
 	ft_fill_stacka(&stacks->a, tab);
 	ft_copynmatch(tab, stacks->a);
 	stacks->size = tab->len;
 	free(tab->array);
 	free(tab);
+
 	stacks->b = NULL;
 	if (stacks->size == 2)
 		{
@@ -145,7 +148,7 @@ void	free_stack(t_stack **stack)
 int	main(int argc, char **argv)
 {
 	t_tab		*tab;
-	t_stacks	*stacks;
+	t_stack		stacks;
 
 	if (argc < 2)
 		exit(1);
@@ -154,16 +157,21 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 	{
+		// if (!*argv[1])
+		// 	ft_error("e\n");
 		ft_isnumber_onestring(argv, tab);
+	
+		
+	
 		ft_fillarr_onestr(argv, tab);
 	}
 	if (argc > 2)
 	{
 		ft_isnumber_array(argc - 1, argv, tab);
 		ft_fillarr_array(argv, tab);
+
 	}
-	
-	ft_checkduplicate_limit(tab);
+	// ft_checkduplicate_limit(tab);
 	// int i = 0;
 	// while(tab->len > i)
 	// {
@@ -172,15 +180,16 @@ int	main(int argc, char **argv)
 	// }
 	// exit(0);
 
-	stacks = (t_stacks *)malloc(sizeof(t_stacks));
-	if (!stacks)
-		exit(1);
+	// stacks = (t_stacks *)malloc(sizeof(t_stacks));
+	// if (!stacks)+
+	
+	// 	exit(1);
 
-	ft_alloc_sort(tab, stacks);
+	ft_alloc_sort(tab, &stacks);
 
 	// ft_print_stk(stacks->a);
 	// ft_print_stk(stacks->b);
-	// free_stack(&stacks->a);
+	// free_stack(&stacks.a);
 	// ft_print_stk(stacks->a);
 
 	// free_stack(&stacks->b);

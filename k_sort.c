@@ -6,13 +6,13 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:10:49 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 17:02:08 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 13:09:35 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	k_sort1(t_stacks *stacks, int length)
+void	k_sort1(t_stack *stacks, int length)
 {
 	int	i;
 	int	range;
@@ -39,7 +39,7 @@ void	k_sort1(t_stacks *stacks, int length)
 	}
 }
 
-void	k_sort2(t_stacks *stacks, int length)
+void	k_sort2(t_stack *stacks, int length)
 {
 	int	rb_count;
 	int	rrb_count;
