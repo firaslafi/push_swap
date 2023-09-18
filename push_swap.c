@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 16:52:26 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 12:59:17 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_stack	*ft_createnode(int data)
 	{
 		new_node->data = data;
 		new_node->next = NULL;
+		new_node->index = 0;
 	}
 	return (new_node);
 }
@@ -170,9 +171,11 @@ int	main(int argc, char **argv)
 	// 	i++;
 	// }
 	// exit(0);
+
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
 	if (!stacks)
 		exit(1);
+
 	ft_alloc_sort(tab, stacks);
 
 	// ft_print_stk(stacks->a);
