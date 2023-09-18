@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 23:11:20 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/17 16:51:50 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 18:38:46 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void	ft_set_index(int *arr_cpy, t_stack **stack)
 void	ft_match(int *arr_cpy, t_stack *stack, int len)
 {
 	int	i;
-	int j;
+	int	j;
+
 	i = 0;
 	j = 0;
-
-	while (i < len )
+	while (i < len)
 	{
 		while (j < len)
 		{
@@ -102,7 +102,7 @@ void	ft_copynmatch(t_tab *tab, t_stack *stack)
 		i++;
 	}
 	arr_cpy = ft_bubblesort(arr_cpy, tab->len);
-
 	ft_match(arr_cpy, stack, tab->len);
-	free(arr_cpy);
 }
+
+	// free(arr_cpy);

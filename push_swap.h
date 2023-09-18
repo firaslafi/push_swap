@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/18 14:14:54 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 18:47:16 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 # include "./libft/libft.h"
 # include "./printf/ft_printf.h"
 # include <limits.h>
-# include <stdio.h>
+// # include <stdio.h>
+
 typedef struct s_stack
 {
 	int				data;
 	int				index;
 	struct s_stack	*next;
-	struct s_stack			*a;
-	struct s_stack			*b;
+	struct s_stack	*a;
+	struct s_stack	*b;
 	int				size;
 }					t_stack;
 
@@ -73,6 +74,7 @@ int					ft_nb_arr_helper(char **array, t_tab *tab);
 char				*ft_fill_str(int count, char **argv);
 int					ft_fillarr_onestr(char **argv, t_tab *tab);
 void				free_split(char **array);
-int				ft_error(char *str);
-void	ft_print_stk(t_stack *stk);
+int					ft_error(char *str);
+void				sorting_4(t_stack *stacks);
+void				ft_print_stk(t_stack *stk);
 #endif

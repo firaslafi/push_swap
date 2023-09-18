@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:57:36 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/18 15:13:52 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 18:45:14 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ int	ft_fillarr_onestr(char **argv, t_tab *tab)
 	char	**str;
 
 	str = ft_split(argv[1], ' ');
+	if (!*argv[1])
+		ft_error("e\n");
 	tab->array = (long *)malloc((sizeof(long) * tab->len));
 	if (!tab->array)
 		return (0);
 	i = 0;
-
 	while (str[i])
 	{
 		tab->array[i] = ft_atol(str[i]);
@@ -64,6 +65,5 @@ int	ft_fillarr_onestr(char **argv, t_tab *tab)
 	if (ft_issorted(tab))
 		exit(0);
 	free_split(str);
-
 	return (1);
 }

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   sorting_four.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 22:46:51 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/18 18:39:02 by flafi            ###   ########.fr       */
+/*   Created: 2023/09/18 18:43:36 by flafi             #+#    #+#             */
+/*   Updated: 2023/09/18 18:46:55 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_error(char *str)
+void	sorting_4(t_stack *stacks)
 {
-	ft_putstr_fd("Error\n", 2);
-	(void)str;
-	return (EXIT_FAILURE);
+	int	n;
+
+	n = stacks->size;
+	while (stacks->a->index != 0)
+		ra(&stacks->a);
+	pb(&stacks->a, &stacks->b);
+	if (!is_sorted(stacks->a))
+		ft_casethree(&stacks->a);
+	pa(&stacks->a, &stacks->b);
 }

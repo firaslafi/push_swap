@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 20:58:57 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/18 15:14:29 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 18:40:34 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	ft_isnumber_array(int count, char **argv, t_tab *tab)
 {
 	char	**array;
 	char	*str;
+
 	str = ft_fill_str(count, argv);
 	if (!ft_checksign(str))
 		return (0);
@@ -78,10 +79,9 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 
 	i = 1;
 	j = 0;
-
 	tab->array = malloc((sizeof(long) * (tab->len)));
 	if (!tab->array)
-		exit (0);
+		exit(0);
 	while (argv[i])
 	{
 		tab->array[j] = ft_atol(argv[i]);
@@ -90,7 +90,6 @@ int	ft_fillarr_array(char **argv, t_tab *tab)
 	}
 	tab->array[j] = '\0';
 	ft_checkduplicate_limit(tab);
-	
 	if (ft_issorted(tab))
 		exit(0);
 	return (1);

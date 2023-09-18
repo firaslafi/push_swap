@@ -6,31 +6,11 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/18 15:27:57 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/18 18:46:24 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/**************************************/
-void	ft_print_stk(t_stack *stk)
-{
-	t_stack	*tmp;
-
-	if (stk == NULL || stk == NULL)
-	{
-		ft_printf("!Stack\n");
-		return ;
-	}
-	tmp = stk;
-	ft_printf("Stack nodes:\n");
-	while (tmp != NULL)
-	{
-		ft_printf("Number: %i ===> Index: %i\n", tmp->data, tmp->index);
-			tmp = tmp->next;
-	}
-}
-/**************************************/
-
 
 // Function to create a new node
 t_stack	*ft_createnode(int data)
@@ -52,12 +32,12 @@ void	ft_insert_node(t_stack **head, int data, int tmp)
 {
 	t_stack	*new_node;
 	t_stack	*current;
-	
+
 	new_node = ft_createnode(data);
 	if (!new_node)
 	{
-		ft_error("Memory allocation failed!");
-		return ;
+		ft_putstr_fd("Memory allocation failed!", 1);
+		exit(0);
 	}
 	if (tmp == 0)
 	{
@@ -81,25 +61,10 @@ void	ft_fill_stacka(t_stack **head, t_tab *tab)
 
 	i = 0;
 	while (tab->len > i)
-	{	
-		printf("vvvvvvvvvvvvvv, %i\n", tab->len);
-		
+	{
 		ft_insert_node(head, (int)tab->array[i], i);
 		i++;
 	}
-}
-
-void    sorting_4(t_stack *stacks)
-{
-    int n;
-
-    n = stacks->size;
-    while (stacks->a->index != 0)
-        ra(&stacks->a);
-    pb(&stacks->a, &stacks->b);
-    if (!is_sorted(stacks->a))
-        ft_casethree(&stacks->a);
-    pa(&stacks->a, &stacks->b);
 }
 
 void	ft_alloc_sort(t_tab *tab, t_stack *stacks)
@@ -107,14 +72,11 @@ void	ft_alloc_sort(t_tab *tab, t_stack *stacks)
 	ft_fill_stacka(&stacks->a, tab);
 	ft_copynmatch(tab, stacks->a);
 	stacks->size = tab->len;
-	free(tab->array);
-	free(tab);
-
 	stacks->b = NULL;
 	if (stacks->size == 2)
-		{
-			sa(stacks->a);
-		}
+	{
+		sa(stacks->a);
+	}
 	else if (stacks->size == 4)
 	{
 		sorting_4(stacks);
@@ -130,25 +92,10 @@ void	ft_alloc_sort(t_tab *tab, t_stack *stacks)
 	}
 }
 
-void	free_stack(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	if (!stack || !(*stack))
-		return ;
-	while ((*stack)->next)
-	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
-	}
-	*stack = NULL;
-}
-
 int	main(int argc, char **argv)
 {
-	t_tab		*tab;
-	t_stack		stacks;
+	t_tab	*tab;
+	t_stack	stacks;
 
 	if (argc < 2)
 		exit(1);
@@ -157,48 +104,27 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 	{
-		// if (!*argv[1])
-		// 	ft_error("e\n");
 		ft_isnumber_onestring(argv, tab);
-	
-		
-	
 		ft_fillarr_onestr(argv, tab);
 	}
 	if (argc > 2)
 	{
 		ft_isnumber_array(argc - 1, argv, tab);
 		ft_fillarr_array(argv, tab);
-
 	}
-	// ft_checkduplicate_limit(tab);
-	// int i = 0;
-	// while(tab->len > i)
-	// {
-	// 	printf("value = %li\n", tab->array[i]);
-	// 	i++;
-	// }
-	// exit(0);
-
-	// stacks = (t_stacks *)malloc(sizeof(t_stacks));
-	// if (!stacks)+
-	
-	// 	exit(1);
-
 	ft_alloc_sort(tab, &stacks);
-
-	// ft_print_stk(stacks->a);
-	// ft_print_stk(stacks->b);
-	// free_stack(&stacks.a);
-	// ft_print_stk(stacks->a);
-
-	// free_stack(&stacks->b);
-	// free(stacks);
-	// system("leaks push_swap");
 	return (0);
 }
-// sign leak 
 
+// ft_print_stk(stacks->a);
+// ft_print_stk(stacks->b);
+// free_stack(&stacks.a);
+// ft_print_stk(stacks->a);
+// free_stack(&stacks->b);
+// free(stacks);
+// free(tab->array);
+// free(tab);
+// system("leaks push_swap");
 
 // void	free_stack(t_stack **stack)
 // {
@@ -217,3 +143,36 @@ int	main(int argc, char **argv)
 // free_stack(&stacks->a);
 // free_stack(&stacks->b);
 // free(stacks);
+// void	free_stack(t_stack **stack)
+// {
+// 	t_stack	*tmp;
+
+// 	if (!stack || !(*stack))
+// 		return ;
+// 	while ((*stack)->next)
+// 	{
+// 		tmp = (*stack)->next;
+// 		free(*stack);
+// 		*stack = tmp;
+// 	}
+// 	*stack = NULL;
+// }
+/**************************************/
+/*void	ft_print_stk(t_stack *stk)
+{
+	t_stack	*tmp;
+
+	if (stk == NULL || stk == NULL)
+	{
+		ft_printf("!Stack\n");
+		return ;
+	}
+	tmp = stk;
+	ft_printf("Stack nodes:\n");
+	while (tmp != NULL)
+	{
+		ft_printf("Number: %i ===> Index: %i\n", tmp->data, tmp->index);
+		tmp = tmp->next;
+	}
+}*/
+/**************************************/

@@ -3,7 +3,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 # Source files
-SRC_FILES = push_swap.c ft_atol.c swap.c push.c rotate.c rev_rotate.c ft_sqrt.c utils.c k_sort.c cpy_match_sort.c multi_arg_parse.c one_arg_parse.c free_split.c ft_error.c
+SRC_FILES = push_swap.c ft_atol.c swap.c push.c rotate.c rev_rotate.c ft_sqrt.c utils.c k_sort.c \
+			 cpy_match_sort.c multi_arg_parse.c one_arg_parse.c free_split.c ft_error.c sorting_four.c
 SRC_PATH = ./
 SRCS = $(addprefix $(SRC_PATH), $(SRC_FILES))
 
