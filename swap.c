@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 23:21:49 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/11 23:10:19 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/19 20:59:32 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,9 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 	swap(stack_a);
 	swap(stack_b);
 	ft_printf("ss\n");
+}
+void	ss_checker(t_stack *stack_a, t_stack *stack_b)
+{
+	swap(stack_a);
+	swap(stack_b);
 }
