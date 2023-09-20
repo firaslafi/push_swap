@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:04:38 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/19 21:04:14 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/20 17:32:55 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ int main(int argc, char **argv)
 	tab = (struct s_tab *)malloc(sizeof(struct s_tab));
 	if (!tab)
 		return (0);
-	stacks.b = malloc(sizeof(struct s_stack));
 	if (argc == 2)
 	{
 		ft_isnumber_onestring(argv, tab);
@@ -158,11 +157,13 @@ int main(int argc, char **argv)
 		ft_isnumber_array(argc - 1, argv, tab);
 		ft_fillarr_array(argv, tab);
 	}
-
+	stacks.b = NULL;
 	ft_fill_stacka(&stacks.a, tab);
+
 	read_moves(&stacks);
     ft_print_stk(stacks.a);
-
+	printf("stack B below:\n");
+	ft_print_stk(stacks.b);
 
     return 0;
 }
