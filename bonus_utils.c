@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   bonus_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 22:46:51 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/22 21:31:34 by flafi            ###   ########.fr       */
+/*   Created: 2023/09/22 21:40:52 by flafi             #+#    #+#             */
+/*   Updated: 2023/09/22 21:44:27 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	ft_error(char *str)
+void	check_sorted_andprint(t_stack stacks)
 {
-	ft_putstr_fd("Error\n", 2);
-	(void)str;
-	return (EXIT_FAILURE);
+	if (is_sorted_checker(stacks.a) && !stacks.b)
+		ft_putstr_fd("OK\n", 1);
+	else
+		ft_putstr_fd("KO\n", 1);
 }

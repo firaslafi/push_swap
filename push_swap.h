@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:47:17 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/19 20:59:42 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/22 21:10:07 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_tab
 }					t_tab;
 
 long				ft_atol(const char *str);
-void	push(t_stack **source, t_stack **destination);
+void				push(t_stack **source, t_stack **destination);
 void				swap(t_stack *stack);
 void				sa(t_stack *stack_a);
 void				sb(t_stack *stack_b);
@@ -50,7 +50,7 @@ void				rotate(t_stack **stack);
 void				ra(t_stack **stack);
 void				rb(t_stack **stack);
 void				rr(t_stack **stacka, t_stack **stackb);
-void	rev_rotate(t_stack **stack);
+void				rev_rotate(t_stack **stack);
 void				rra(t_stack **stack);
 void				rrb(t_stack **stack);
 void				rrr(t_stack **stacka, t_stack **stackb);
@@ -79,4 +79,5 @@ void				free_split(char **array);
 int					ft_error(char *str);
 void				sorting_4(t_stack *stacks);
 void				ft_print_stk(t_stack *stk);
+void				ft_insert_node(t_stack **head, int data, int tmp);
 #endif

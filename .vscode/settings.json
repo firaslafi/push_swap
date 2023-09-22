@@ -9,6 +9,7 @@
         "iterator": "c",
         "push_swap.h": "c",
         "__tuple": "c",
-        "limits.h": "c"
+        "limits.h": "c",
+        "checker.h": "c"
     }
 }

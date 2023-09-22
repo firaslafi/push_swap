@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:31:35 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/19 20:46:31 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/22 20:51:31 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ int	main(int argc, char **argv)
 		ft_fillarr_array(argv, tab);
 	}
 	ft_alloc_sort(tab, &stacks);
-
 	return (0);
 }
 

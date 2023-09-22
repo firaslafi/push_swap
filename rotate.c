@@ -6,7 +6,7 @@
 /*   By: flafi <flafi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 00:04:25 by flafi             #+#    #+#             */
-/*   Updated: 2023/09/19 20:29:28 by flafi            ###   ########.fr       */
+/*   Updated: 2023/09/22 20:51:01 by flafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	rr(t_stack **stacka, t_stack **stackb)
 	rotate(stackb);
 	ft_printf("rr\n");
 }
+
 void	rr_checker(t_stack **stacka, t_stack **stackb)
 {
 	rotate(stacka);
